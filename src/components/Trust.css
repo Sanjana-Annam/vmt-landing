@@ -25,3 +25,13 @@
   transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
+@media (max-width: 768px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .trust {
+    padding: 60px 5vw;
+  }
+}
