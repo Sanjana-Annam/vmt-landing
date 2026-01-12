@@ -8,7 +8,7 @@
   );
   display: flex;
   align-items: center;
-  position: relative;
+  
 }
 
 .hero-inner {
@@ -69,4 +69,42 @@
   width: auto;
   opacity: 0.95;
 }
-https://vmt-landing.vercel.app/
+/* ---------------- MOBILE FIX ---------------- */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 5vw 60px;
+    min-height: auto;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr; /* stack */
+    gap: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+    line-height: 1.15;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-content ul li {
+    font-size: 14px;
+  }
+
+  /* LOGO */
+  .hero-logo {
+    top: 20px;
+    left: 5vw;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 32px;
+  }
+}
