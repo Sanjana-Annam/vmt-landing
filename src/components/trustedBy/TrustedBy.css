@@ -1,0 +1,110 @@
+.trusted-section {
+  padding: 100px 6%;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(26, 11, 46, 0.9),
+      #02010a 70%
+    );
+  color: white;
+  position: relative;
+}
+
+.trusted-label {
+  text-align: center;
+  letter-spacing: 3px;
+  color: #b46cff;
+  margin-bottom: 30px;
+}
+
+.trusted-heading {
+  text-align: center;
+  font-size: 36px;
+  margin: 60px 0 40px;
+}
+/* ===== BRAND LOGO SLIDER ===== */
+
+.logo-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 30px 0;
+}
+
+/* Fading edges */
+.logo-slider::before,
+.logo-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-slider::before {
+  left: 0;
+  background: linear-gradient(to right, #02010a, transparent);
+}
+
+.logo-slider::after {
+  right: 0;
+  background: linear-gradient(to left, #02010a, transparent);
+}
+
+/* Moving track */
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLogos 15s linear infinite;
+}
+
+/* Pause animation on hover */
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Individual logo card */
+.logo-item {
+  min-width: 160px;
+  height: 90px;
+  margin: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Logo image */
+.logo-item img {
+  max-width: 110px;
+  max-height: 50px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.logo-item:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(180, 108, 255, 0.35);
+}
+
+.logo-item:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Infinite scroll animation */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

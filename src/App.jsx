@@ -1,14 +1,26 @@
-import Hero from "./components/Hero";
-import Trust from "./components/Trust";
-import Footer from "./components/Footer";
-import "./index.css";
+import { useState } from "react";
+import Hero from "./components/hero/Hero";
+import TrustedBy from "./components/trustedBy/TrustedBy";
+import WhyChooseUs from "./components/whyChooseUs/WhyChooseUs";
+import Founder from "./components/founder/Founder";
+import Process from "./components/process/Process";
+import Footer from "./components/footer/Footer";
+import PageLoader from "./components/loader/PageLoader";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  if (loading) {
+    return <PageLoader onFinish={() => setLoading(false)} />;
+  }
+
   return (
     <>
       <Hero />
-      
-      <Trust />
+      <TrustedBy />
+      <WhyChooseUs />
+      <Founder />
+      <Process />
       <Footer />
     </>
   );

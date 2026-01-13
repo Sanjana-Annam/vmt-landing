@@ -1,0 +1,103 @@
+.clients-work {
+  padding: 120px 8vw;
+  background: radial-gradient(
+    circle at top,
+    #1b0f2e 0%,
+    #090412 55%,
+    #05030a 100%
+  );
+  text-align: center;
+}
+
+.clients-work h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.clients-subtitle {
+  color: #b8a9ff;
+  font-size: 16px;
+  margin-bottom: 100px;
+}
+
+/* GRID */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* CARD */
+.client-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 70px 26px 34px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(124, 58, 237, 0.25);
+}
+
+/* CIRCULAR LOGO */
+.client-logo {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 76px;
+  background: #0f0a1f;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 58, 237, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.client-card h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.client-card span {
+  display: block;
+  font-size: 13px;
+  color: #9b8cff;
+  margin: 6px 0 14px;
+}
+
+.client-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d1cfff;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .clients-work {
+    padding: 90px 6vw;
+  }
+
+  .clients-work h2 {
+    font-size: 32px;
+  }
+}

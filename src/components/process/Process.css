@@ -1,0 +1,106 @@
+.process-section {
+  padding: 90px 6%;
+  background: radial-gradient(circle at top, #1a0b2e, #02010a);
+  color: #ffffff;
+}
+
+.process-container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.process-container h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.process-subtitle {
+  text-align: center;
+  color: #bfc6ff;
+  font-size: 16px;
+  margin-bottom: 60px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* CARD */
+.process-card {
+  position: relative;
+  padding: 36px 28px 34px;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 22, 40, 0.95),
+    rgba(10, 12, 24, 0.98)
+  );
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 120px rgba(180, 108, 255, 0.35);
+}
+
+/* STEP NUMBER */
+.step-number {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-size: 42px;
+  font-weight: 700;
+  color: rgba(180, 108, 255, 0.25);
+}
+
+/* ICON */
+.process-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #8b5cff, #4f8bff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.process-icon svg {
+  width: 26px;
+  height: 26px;
+  color: #ffffff;
+}
+
+/* TEXT */
+.process-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 15px;
+  color: #cfd3ff;
+  line-height: 1.6;
+}
+
+/* -------- MOBILE -------- */
+
+@media (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .process-container h2 {
+    font-size: 32px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
