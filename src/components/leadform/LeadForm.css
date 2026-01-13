@@ -31,15 +31,47 @@
 
 /* INPUTS */
 .form-card input,
+/* ===== SELECT FIX ===== */
+
 .form-card select {
-  height: 46px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: rgba(255,255,255,0.05);
   color: #ffffff;
-  padding: 0 14px;
-  transition: border 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+
+  /* custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #b46cff 50%),
+    linear-gradient(135deg, #b46cff 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
 }
+
+/* Dropdown options */
+.form-card select option {
+  background-color: #02010a;
+  color: #ffffff;
+  padding: 12px;
+}
+
+/* Selected option */
+.form-card select option:checked {
+  background-color: #b46cff;
+  color: #ffffff;
+}
+
+/* Hovered option (Chrome/Edge/Firefox) */
+.form-card select option:hover {
+  background-color: #6f7bff;
+  color: #ffffff;
+}
+
 
 .form-card input::placeholder {
   color: #9aa2ff;
