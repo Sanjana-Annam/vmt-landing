@@ -74,12 +74,7 @@ export default function LeadForm() {
         });
 
         // OPTIONAL: redirect after 2s
-        setTimeout(() => {
-          window.open(
-            "https://calendly.com/sanjanaannam8795/30min",
-            "_blank"
-          );
-        }, 2000);
+        
 
         setLoading(false);
       })
