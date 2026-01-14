@@ -1,6 +1,5 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-
 import "./LeadForm.css";
 
 export default function LeadForm() {
@@ -15,6 +14,7 @@ export default function LeadForm() {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -32,27 +32,38 @@ export default function LeadForm() {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length !== 0) return;
 
     setLoading(true);
 
-    emailjs
-      .send(
-        "service_hli8hwq",      // 🔴 replace
-        "template_g77zik4",     // 🔴 replace
-        {
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          business: form.business,
-          service: form.service,
-          budget: form.budget,
-        },
-        "eoZBBNGfkfAbMYQ4F"       // 🔴 replace
+    const templateParams = {
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      business: form.business,
+      service: form.service,
+      budget: form.budget
+    };
+
+    Promise.all([
+      // ADMIN EMAIL
+      emailjs.send(
+        "service_hli8hwq",
+        "template_g77zik4",
+        templateParams,
+        "eoZBBNGfkfAbMYQ4F"
+      ),
+
+      // CLIENT AUTO-REPLY
+      emailjs.send(
+        "service_hli8hwq",
+        "template_22btows",
+        templateParams,
+        "eoZBBNGfkfAbMYQ4F"
       )
+    ])
       .then(() => {
-        alert(" Thank you! We’ll contact you within 24 hours.");
+        setSuccess(true);
         setForm({
           name: "",
           phone: "",
@@ -61,11 +72,20 @@ export default function LeadForm() {
           service: "",
           budget: ""
         });
+
+        // OPTIONAL: redirect after 2s
+        setTimeout(() => {
+          window.open(
+            "https://calendly.com/sanjanaannam8795/30min",
+            "_blank"
+          );
+        }, 2000);
+
         setLoading(false);
       })
       .catch((err) => {
         console.error("EmailJS Error:", err);
-        alert(" Something went wrong. Please try again.");
+        alert("Something went wrong. Please try again.");
         setLoading(false);
       });
   };
@@ -74,6 +94,12 @@ export default function LeadForm() {
     <form className="form-card" onSubmit={handleSubmit}>
       <h3>Get a Free Growth Consultation</h3>
       <p>We’ll get back within 24 hours.</p>
+
+      {success && (
+        <div className="form-success">
+          ✅ Thank you! Please check your email to book a meeting.
+        </div>
+      )}
 
       <input
         placeholder="Full Name *"
@@ -130,7 +156,7 @@ export default function LeadForm() {
       {errors.budget && <span>{errors.budget}</span>}
 
       <button type="submit" disabled={loading}>
-        {loading ? "Sending..." : "Request Free Consultation "}
+        {loading ? "Sending..." : "Request Free Consultation"}
       </button>
 
       <small>No spam. 100% privacy.</small>
