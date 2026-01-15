@@ -1,5 +1,4 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import "./LeadForm.css";
 
 export default function LeadForm() {
@@ -13,8 +12,6 @@ export default function LeadForm() {
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -30,71 +27,29 @@ export default function LeadForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const validationErrors = validate();
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length !== 0) return;
 
-    setLoading(true);
+    // ✅ Zoho Booking URL with PREFILLED DATA
+    const bookingUrl =
+      "https://viralmarketingtrends.zohobookings.in/#/406960000000039054" +
+      `?customer_name=${encodeURIComponent(form.name)}` +
+      `&customer_email=${encodeURIComponent(form.email)}` +
+      `&customer_phone=${encodeURIComponent(form.phone)}` +
+      `&Business=${encodeURIComponent(form.business)}` +
+      `&Service=${encodeURIComponent(form.service)}` +
+      `&Budget=${encodeURIComponent(form.budget)}`;
 
-    const templateParams = {
-      name: form.name,
-      phone: form.phone,
-      email: form.email,
-      business: form.business,
-      service: form.service,
-      budget: form.budget
-    };
-
-    Promise.all([
-      // ADMIN EMAIL
-      emailjs.send(
-        "service_hli8hwq",
-        "template_g77zik4",
-        templateParams,
-        "eoZBBNGfkfAbMYQ4F"
-      ),
-
-      // CLIENT AUTO-REPLY
-      emailjs.send(
-        "service_hli8hwq",
-        "template_22btows",
-        templateParams,
-        "eoZBBNGfkfAbMYQ4F"
-      )
-    ])
-      .then(() => {
-        setSuccess(true);
-        setForm({
-          name: "",
-          phone: "",
-          email: "",
-          business: "",
-          service: "",
-          budget: ""
-        });
-
-        // OPTIONAL: redirect after 2s
-        
-
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("EmailJS Error:", err);
-        alert("Something went wrong. Please try again.");
-        setLoading(false);
-      });
+    // ✅ Open booking (new tab OR same tab – choose one)
+    window.open(bookingUrl, "_blank"); // "_self" if you want same tab
   };
 
   return (
     <form className="form-card" onSubmit={handleSubmit}>
       <h3>Get a Free Growth Consultation</h3>
-      <p>We’ll get back within 24 hours.</p>
-
-      {success && (
-        <div className="form-success">
-          ✅ Thank you! Please check your email to book a meeting.
-        </div>
-      )}
+      <p>Fill the form once — book your slot instantly.</p>
 
       <input
         placeholder="Full Name *"
@@ -150,8 +105,8 @@ export default function LeadForm() {
       </select>
       {errors.budget && <span>{errors.budget}</span>}
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Sending..." : "Request Free Consultation"}
+      <button type="submit">
+        Book Free Strategy Call →
       </button>
 
       <small>No spam. 100% privacy.</small>

@@ -7,8 +7,13 @@
     #05030a 100%
   );
   text-align: center;
+
+  /* 🔥 CRITICAL FIX */
+  position: relative;
+  overflow: visible;
 }
 
+/* TITLE */
 .clients-work h2 {
   font-size: 42px;
   font-weight: 700;
@@ -27,6 +32,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 34px;
+
+  /* 🔥 FIX animation clipping */
+  overflow: visible;
 }
 
 /* CARD */
@@ -36,16 +44,27 @@
     rgba(255, 255, 255, 0.06),
     rgba(255, 255, 255, 0.02)
   );
-  backdrop-filter: blur(16px);
+
+  /* 🔥 MOBILE PERFORMANCE FIX */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border-radius: 22px;
   padding: 38px 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: left;
+
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  /* 🔥 REQUIRED FOR FRAMER MOTION */
+  will-change: transform, opacity;
 }
 
-.client-card:hover {
-  box-shadow: 0 28px 60px rgba(124, 58, 237, 0.28);
+/* DESKTOP HOVER ONLY */
+@media (hover: hover) {
+  .client-card:hover {
+    box-shadow: 0 28px 60px rgba(124, 58, 237, 0.28);
+  }
 }
 
 /* TEXT */
@@ -80,5 +99,10 @@
 
   .clients-subtitle {
     margin-bottom: 70px;
+  }
+
+  /* 🔥 MOBILE GRID FIX */
+  .clients-grid {
+    grid-template-columns: 1fr;
   }
 }
