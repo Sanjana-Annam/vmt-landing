@@ -7,6 +7,7 @@ import Process from "./components/process/Process";
 import Footer from "./components/footer/Footer";
 import PageLoader from "./components/loader/PageLoader";
 import FAQ from "./components/faq/FAQ";
+import VimiWidget from "./components/VimiChat/VimiWidget";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,8 @@ export default function App() {
   }
 
   return (
-    <>
+    <> 
+      <VimiWidget />
       <Hero />
       <TrustedBy />
       <WhyChooseUs />
