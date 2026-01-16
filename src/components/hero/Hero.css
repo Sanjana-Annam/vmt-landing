@@ -140,3 +140,44 @@
     display: none;
   }
 }
+/* =========================
+   MOBILE LEAD FORM TUNING
+   ========================= */
+@media (max-width: 768px) {
+
+  .form-mobile {
+    padding: 20px 18px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+
+  .form-mobile h3 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .form-mobile p {
+    font-size: 13px;
+  }
+
+  .form-mobile input,
+  .form-mobile select {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .form-mobile button {
+    height: 46px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .form-mobile small {
+    font-size: 11px;
+  }
+
+  /* Hide non-critical helper text on mobile */
+  .form-mobile small {
+    display: none;
+  }
+}
