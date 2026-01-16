@@ -45,6 +45,17 @@ export default function Hero() {
       />
 
       <div className="hero-inner">
+
+        {/* 🔹 MOBILE CTA (VISIBLE ONLY ON MOBILE) */}
+        <motion.div
+          className="hero-form hero-form-mobile"
+          variants={fadeScale}
+          initial="hidden"
+          animate="visible"
+        >
+          <LeadForm />
+        </motion.div>
+
         {/* LEFT CONTENT */}
         <motion.div
           className="hero-content"
@@ -52,11 +63,8 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.span
-            className="hero-badge"
-            variants={fadeUp}
-          >
-            ⚡ Performance-Driven Marketing
+          <motion.span className="hero-badge" variants={fadeUp}>
+            Performance-Driven Marketing
           </motion.span>
 
           <motion.h1 variants={fadeUp}>
@@ -69,25 +77,23 @@ export default function Hero() {
             performance marketing strategies.
           </motion.p>
 
-          <motion.ul
-            className="hero-points"
-            variants={container}
-          >
+          <motion.ul className="hero-points" variants={container}>
             <motion.li variants={fadeUp}>✔ ROI-focused growth</motion.li>
             <motion.li variants={fadeUp}>✔ Full-service digital marketing</motion.li>
             <motion.li variants={fadeUp}>✔ Transparent reporting</motion.li>
           </motion.ul>
         </motion.div>
 
-        {/* RIGHT FORM */}
+        {/* 🔹 DESKTOP CTA (VISIBLE ONLY ON DESKTOP) */}
         <motion.div
-          className="hero-form"
+          className="hero-form hero-form-desktop"
           variants={fadeScale}
           initial="hidden"
           animate="visible"
         >
           <LeadForm />
         </motion.div>
+
       </div>
     </section>
   );

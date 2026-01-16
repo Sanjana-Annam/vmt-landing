@@ -108,3 +108,35 @@
   height: 2px;
   background: #02010a;
 }
+/* Default desktop layout */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Hide mobile CTA on desktop */
+.hero-form-mobile {
+  display: none;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show mobile CTA first */
+  .hero-form-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Hide desktop CTA */
+  .hero-form-desktop {
+    display: none;
+  }
+}
