@@ -1,6 +1,6 @@
 import { useState } from "react";
 import VimiChat from "./VimiChat";
-import "./VimiChat.css";
+import "./vimiChat.css";
 
 export default function VimiWidget() {
   const [open, setOpen] = useState(false);
