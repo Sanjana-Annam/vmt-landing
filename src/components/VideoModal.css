@@ -1,0 +1,29 @@
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 18, 0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.video-player {
+  width: 80%;
+  max-width: 1000px;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+.video-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
