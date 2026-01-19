@@ -2,15 +2,17 @@ import "./Hero.css";
 import LeadForm from "../leadform/LeadForm";
 import logo from "../../assets/vmt-logo.png";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import VideoModal from "../VideoModal";
 
 /* Animation variants */
 const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15
-    }
-  }
+      staggerChildren: 0.15,
+    },
+  },
 };
 
 const fadeUp = {
@@ -18,8 +20,8 @@ const fadeUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" }
-  }
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
 };
 
 const fadeScale = {
@@ -27,27 +29,39 @@ const fadeScale = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.7, ease: "easeOut" }
-  }
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
 };
 
 export default function Hero() {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
     <section className="hero">
-      {/* LOGO */}
-      <motion.img
-        src={logo}
-        alt="Viral Marketing Trends"
-        className="hero-logo"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      />
+      {/* TOP BAR (LOGO + VIDEO BUTTON) */}
+      <div className="hero-top">
+        <motion.img
+          src={logo}
+          alt="Viral Marketing Trends"
+          className="hero-logo"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+
+        {/* VIDEO PLAY BUTTON */}
+        <button
+          className="hero-video-btn"
+          onClick={() => setShowVideo(true)}
+          aria-label="Play video"
+        >
+          <span className="play-icon">▶</span>
+        </button>
+      </div>
 
       <div className="hero-inner">
-
         {/* =========================
-           MOBILE CTA (TOP PRIORITY)
+           MOBILE CTA
            ========================= */}
         <motion.div
           className="hero-form hero-form-mobile"
@@ -89,7 +103,7 @@ export default function Hero() {
         </motion.div>
 
         {/* =========================
-           DESKTOP CTA (RIGHT SIDE)
+           DESKTOP CTA
            ========================= */}
         <motion.div
           className="hero-form hero-form-desktop"
@@ -99,8 +113,10 @@ export default function Hero() {
         >
           <LeadForm variant="desktop" />
         </motion.div>
-
       </div>
+
+      {/* VIDEO MODAL */}
+      <VideoModal open={showVideo} onClose={() => setShowVideo(false)} />
     </section>
   );
 }
