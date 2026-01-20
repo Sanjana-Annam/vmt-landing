@@ -1,30 +1,91 @@
+/* =========================
+   HERO BASE
+   ========================= */
 .hero {
   min-height: 100vh;
   padding: 80px 6vw;
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(26, 11, 46, 0.9),
-      #02010a 70%
-    );
+  background: radial-gradient(
+    circle at top,
+    rgba(26, 11, 46, 0.9),
+    #02010a 70%
+  );
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #02010a;
+}
 
+/* =========================
+   HERO TOP (LOGO BAR)
+   ========================= */
+.hero-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, avatar right */
+  z-index: 5;
+}
+
+.hero-logo {
+  height: 42px;
+  opacity: 0.95;
+}
+
+/* =========================
+   VIDEO / AVATAR FIX — scrolls with hero
+   ========================= */
+.hero-video,
+.hero-avatar,
+.video-bubble {
+  position: absolute !important; /* ensures it scrolls with hero */
+  top: 20px !important;
+  right: 24px !important;
+  z-index: 6 !important;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Hover animation */
+.hero-avatar:hover,
+.video-bubble:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* =========================
+   LAYOUT
+   ========================= */
 .hero-inner {
   width: 100%;
   max-width: 1400px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
   align-items: center;
 }
 
-/* TEXT */
+/* =========================
+   TEXT
+   ========================= */
 .hero-content h1 {
   font-size: 56px;
   line-height: 1.05;
@@ -48,6 +109,7 @@
 .hero-content ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .hero-content li {
@@ -55,140 +117,117 @@
   color: #ffffff;
 }
 
-/* BADGE */
+/* =========================
+   BADGE
+   ========================= */
 .hero-badge {
   display: inline-block;
   padding: 6px 16px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   margin-bottom: 18px;
   font-size: 14px;
   color: #e4d6ff;
   backdrop-filter: blur(10px);
 }
 
-/* LOGO */
-.hero-logo {
-  position: absolute;
-  top: 28px;
-  left: 6vw;
-  height: 42px;
-  opacity: 0.95;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    padding: 100px 5vw 60px;
-    min-height: auto;
-  }
-
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 36px;
-  }
-
-  .hero-logo {
-    top: 20px;
-    left: 5vw;
-    height: 36px;
-  }
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #02010a;
-}
-/* Default desktop layout */
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
-/* Hide mobile CTA on desktop */
+/* =========================
+   FORMS
+   ========================= */
 .hero-form-mobile {
   display: none;
 }
 
-/* MOBILE FIX */
+/* =========================
+   MOBILE RESPONSIVENESS
+   ========================= */
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding: 96px 5vw 64px;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .hero-top {
+    padding: 18px 5vw;
+  }
+
+  .hero-logo {
+    height: 34px;
+  }
+
   .hero-inner {
     display: flex;
     flex-direction: column;
+    gap: 32px;
+  }
+
+  .hero-video,
+  .hero-avatar,
+  .video-bubble {
+    top: 16px !important;
+    right: 16px !important;
+    width: 56px;
+    height: 56px;
   }
 
   /* Show mobile CTA first */
   .hero-form-mobile {
     display: block;
     width: 100%;
-    margin-bottom: 20px;
   }
 
   /* Hide desktop CTA */
   .hero-form-desktop {
     display: none;
   }
-}
-/* =========================
-   MOBILE LEAD FORM TUNING
-   ========================= */
-@media (max-width: 768px) {
 
-  .form-mobile {
-    padding: 20px 18px;
-    border-radius: 18px;
-    gap: 10px;
+  /* Text tuning */
+  .hero-content h1 {
+    font-size: 34px;
+    line-height: 1.15;
   }
 
-  .form-mobile h3 {
-    font-size: 18px;
-    line-height: 1.3;
+  .hero-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 100%;
   }
 
-  .form-mobile p {
-    font-size: 13px;
-  }
-
-  .form-mobile input,
-  .form-mobile select {
-    height: 42px;
+  .hero-content li {
     font-size: 14px;
   }
 
-  .form-mobile button {
-    height: 46px;
-    font-size: 15px;
-    font-weight: 700;
+  .hero-badge {
+    font-size: 13px;
+    padding: 6px 14px;
   }
-
-  .form-mobile small {
-    font-size: 11px;
-  }
-
-  /* Hide non-critical helper text on mobile */
-  .form-mobile small {
-    display: none;
-  }
-  
-}
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 64px;
 }
 
+/* =========================
+   EXTRA SMALL DEVICES
+   ========================= */
+@media (max-width: 420px) {
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-video,
+  .hero-avatar,
+  .video-bubble {
+    top: 12px !important;
+    right: 12px !important;
+  }
+}
+
+/* =========================
+   VIDEO BUTTON (OPTIONAL)
+   ========================= */
 .hero-video-btn {
   width: 64px;
   height: 64px;
@@ -211,5 +250,15 @@
 .play-icon {
   color: white;
   font-size: 20px;
-  margin-left: 2px;
+}
+
+/* =========================
+   ABSOLUTE SCROLL FIX — OVERRIDES ANY GLOBAL FIXED
+   ========================= */
+.hero-avatar[style],
+.video-bubble[style],
+.hero-video[style] {
+  position: absolute !important;
+  top: 20px !important;
+  right: 24px !important;
 }

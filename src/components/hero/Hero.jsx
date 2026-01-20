@@ -2,8 +2,6 @@ import "./Hero.css";
 import LeadForm from "../leadform/LeadForm";
 import logo from "../../assets/vmt-logo.png";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import VideoModal from "../VideoModal";
 
 /* Animation variants */
 const container = {
@@ -34,11 +32,9 @@ const fadeScale = {
 };
 
 export default function Hero() {
-  const [showVideo, setShowVideo] = useState(false);
-
   return (
     <section className="hero">
-      {/* TOP BAR (LOGO + VIDEO BUTTON) */}
+      {/* TOP BAR (LOGO ONLY) */}
       <div className="hero-top">
         <motion.img
           src={logo}
@@ -48,15 +44,6 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
-
-        {/* VIDEO PLAY BUTTON */}
-        <button
-          className="hero-video-btn"
-          onClick={() => setShowVideo(true)}
-          aria-label="Play video"
-        >
-          <span className="play-icon">▶</span>
-        </button>
       </div>
 
       <div className="hero-inner">
@@ -82,7 +69,7 @@ export default function Hero() {
           animate="visible"
         >
           <motion.span className="hero-badge" variants={fadeUp}>
-            ⚡ Performance-Driven Marketing
+            Performance-Driven Marketing
           </motion.span>
 
           <motion.h1 variants={fadeUp}>
@@ -96,9 +83,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.ul className="hero-points" variants={container}>
-            <motion.li variants={fadeUp}>✔ ROI-focused growth</motion.li>
-            <motion.li variants={fadeUp}>✔ Full-service digital marketing</motion.li>
-            <motion.li variants={fadeUp}>✔ Transparent reporting</motion.li>
+            <motion.li variants={fadeUp}>ROI-focused growth</motion.li>
+            <motion.li variants={fadeUp}>Full-service digital marketing</motion.li>
+            <motion.li variants={fadeUp}>Transparent reporting</motion.li>
           </motion.ul>
         </motion.div>
 
@@ -114,9 +101,6 @@ export default function Hero() {
           <LeadForm variant="desktop" />
         </motion.div>
       </div>
-
-      {/* VIDEO MODAL */}
-      <VideoModal open={showVideo} onClose={() => setShowVideo(false)} />
     </section>
   );
 }
